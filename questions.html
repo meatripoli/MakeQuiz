@@ -1,7 +1,56 @@
 <!DOCTYPE html>
 <html>
-    <head></head>
+    <head>
+        <title>Quiz</title>
+        <!--bootstrap-->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+        <!---->
+
+    </head>
     <body>
-        Questions
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="nav-link active" href="highScore.html">
+                View Highscores
+            </a>
+            <div class="nav justify-content-end" id="navbarText">
+                <span class="navbar-text">
+                    Time: 0
+                </span>
+            </div>
+        </nav>        
+        <div class="container">
+            <div class="row">
+                <h1>Questions</h1>
+            </div>
+            <form class="row">
+                <div class="form-check" id="question">
+                    <p id="title">Commonly used data types DO NOT include:</p>
+                    <div class="form-check">
+                        <input class="form-check-input" id= "button0" type="radio" name="radAnswer" value="0">
+                        <label class="form-check-label" id="ans0"></label></label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" id= "button1" type="radio" name="radAnswer" value="1">
+                        <label class="form-check-label" id="ans1"></label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" id= "button2" type="radio" name="radAnswer" value="2">
+                        <label class="form-check-label" id="ans2"></label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" id= "button3" type="radio" name="radAnswer" value="3">
+                        <label class="form-check-label" id="ans3"></label>
+                    </div>
+                </div>
+            </form>
+            <div class="row">
+                <div class="col"><p id="correctans"></p></div>
+                <div class="col"><p id="donebanner"></p></div>
+            </div>
+        </div>
+        <script src="Assets/script/questions.js"></script>
     </body>
 </html>
