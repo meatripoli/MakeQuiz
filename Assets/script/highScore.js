@@ -4,20 +4,32 @@ var submitButton = document.getElementById("highscore-button");
 var intialsTxt = document.getElementById("initials-text"); 
 var highScoreForm = document.getElementById("highscore-form"); 
 var clearScoreButton = document.getElementById("clearscore-button");
-var highScores = [];
 var highScoresArr = JSON.parse(localStorage.getItem("highScores"));
 finalScore.textContent = localStorage.getItem("currentScore")
+
+if(finalScore.textContent == ""){
+    intialsTxt.style.visibility = 'hidden';
+    submitButton.style.visibility = 'hidden';
+}
+else{
+    intialsTxt.style.visibility = '';
+    submitButton.style.visibility = '';
+}
 if(highScoresArr !== null){
     console.log("show current high scores")
-    appendList(highScoresArr);
+    console.log(highScoresArr)
+    displayList(highScoresArr);
+    var highScores = highScoresArr.sort((a, b) => (parseInt(a.score) < parseInt(b.score)) ? 1 : -1);
+}
+else{
+    var highScores = [];
 }
 
-///this creates the Highscores Table
-function appendList(list){
+function displayList(list){
   highScoreList.innerHTML = "";
   for(var i = 0; i<list.length; i++){
       var newBullet = document.createElement("div");
-      newBullet.textContent = list[i];
+      newBullet.textContent = list[i].initials+"-"+list[i].score;
       highScoreList.appendChild(newBullet);
       highScoreList.appendChild(document.createElement("hr"));
   }
@@ -27,10 +39,14 @@ function buttonClick(event){
     event.preventDefault();
     var finalScoreNum = finalScore.textContent;
     var initialsValue = intialsTxt.value;
-    highScores.push(initialsValue+ " - "+finalScoreNum);
+    highScores.push({initials:initialsValue, score:finalScoreNum});
     intialsTxt.value = "";
-    appendList(highScores);
-    localStorage.setItem("highScores", JSON.stringify(highScores))
+    var sortedHighScore = highScores.sort((a, b) => (parseInt(a.score) < parseInt(b.score)) ? 1 : -1);
+    displayList(sortedHighScore);
+    localStorage.setItem("highScores", JSON.stringify(sortedHighScore))
+    intialsTxt.disabled = true;
+    intialsTxt.style.visibility = 'hidden';
+    submitButton.style.visibility = 'hidden';
     // if I want to view it I would do this JSON.parse(localStorage.getItem("highScores"))
 }
 

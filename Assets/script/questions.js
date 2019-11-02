@@ -15,7 +15,18 @@ var titleTxt = document.getElementById("title");
 var choiceButtons = document.querySelectorAll("input");
 var choiceTxt = document.querySelectorAll("label");
 var questionArea = document.getElementById("question");
-var questionNum = 0;
+var startButton = document.getElementById("startButton");
+
+var questionNum;
+var score;
+var running = false;
+
+var quizTimeTxt = document.getElementById("quizTimer");
+var quizTotalSec = 15 * questions.length;
+var quizSecElapsed = 0;
+var interval;
+
+localStorage.removeItem("currentScore");
 
 function switchQuestions(questionsObjectArr,i){
     if(i<questionsObjectArr.length){
@@ -27,7 +38,7 @@ function switchQuestions(questionsObjectArr,i){
         console.log("the End");
         //document.getElementById("donebanner").textContent = "All done!!!!"
         document.location.href = "highScore.html";
-        localStorage.setItem("currentScore", 22);
+        localStorage.setItem("currentScore", score+(quizTotalSec - quizSecElapsed));
     }
 }
 
@@ -47,28 +58,102 @@ function pickAnswer(choicebuttonsArr,choicesTxtArr){
     }
 }
 
-switchQuestions(questions,questionNum);
+function padTimer0(num){
+    if(num<10){
+        return "0" + num;
+    }
+    else{
+        return num;
+    }
+}
+
+function displayTime(seconds){
+    var min = padTimer0(Math.floor(seconds/60));
+    var sec = padTimer0(seconds % 60);
+    quizTimeTxt.textContent =  "Time remaining: "+min+":"+sec
+}
+
+function startTimer(){
+    console.log("timer started");
+    if(running){
+        return;
+    }
+    running = true;
+    interval = setInterval(function(){
+        console.log(quizTotalSec - quizSecElapsed)
+        if (quizTotalSec - quizSecElapsed === 0){
+            console.log("stop timer")
+            stopTimer();
+            document.location.href = "highScore.html";
+        }
+        else{
+            quizSecElapsed++;
+            console.log(displayTime(quizTotalSec - quizSecElapsed))
+            displayTime(quizTotalSec - quizSecElapsed);
+        }
+    }, 1000);  
+}
+
+function stopTimer(){
+    clearInterval(interval);
+    running = false;
+    secondsElapsed = 0;
+    console.log(displayTime(quizTotalSec))
+    displayTime(quizTotalSec)
+}
+
+startButton.addEventListener("click",function(event){    
+    startTimer();
+    document.getElementById("firstContainer").style.display = "none";
+    document.getElementById("secondContainer").style.display = "";
+    questionNum = 0;
+    score = 0;
+    console.log("start quiz button pressed");
+    console.log(displayTime(quizTotalSec));
+    console.log(questions);
+    console.log(questionNum);
+    ///function that starts the time goes here
+    //quizTimeTxt.textContent = displayTime(quizTotalSec);
+    switchQuestions(questions,questionNum);
+})
+
 
 questionArea.addEventListener("click",function(event){
     console.log("click");
     var answerPicked = pickAnswer(choiceButtons,choiceTxt);
     console.log(answerPicked);
     console.log(questions[questionNum].answer);
+/*
+if answer is correct 1 point is assigned to total score
+to calculate the total score we will add the points and add the seconds left
+ex: 2pt+15sec new score: 17
+if answer is wrong no points will be given and 10 sec will be removed from timer
+
+*/
    if(answerPicked === questions[questionNum].answer){
         console.log("correct");
+        score += 5;
         document.getElementById("correctans").textContent = "Correct!!!!";
+        document.getElementById("correctans").appendChild(document.createElement("hr"));
         questionNum++;
         ///delay of 1 sec before switching to new question
         setTimeout(switchQuestions(questions,questionNum),1000);
     }
     else{
         console.log("wrong");
+        if(quizTotalSec - quizSecElapsed<=10){
+            quizSecElapsed += quizTotalSec - quizSecElapsed
+        }
+        else{
+            quizSecElapsed +=10;
+        }
+        
         document.getElementById("correctans").textContent = "Wrong!!!!";
+        document.getElementById("correctans").appendChild(document.createElement("hr"));
         questionNum++;
         ///delay of 1 sec before switching to new question
         setTimeout(switchQuestions(questions,questionNum),1000);
     }
 })
 
-
-  
+////////////////////////////Timer Section///////////

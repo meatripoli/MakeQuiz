@@ -12,15 +12,15 @@
     <body>
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <a class="nav-link active" href="highScore.html">
-                View Highscores
+                Highscores
             </a>
             <div class="nav justify-content-end" id="navbarText">
-                <span class="navbar-text">
+                <span class="navbar-text" id="quizTimer">
                     Time: 0
                 </span>
             </div>
         </nav>        
-        <div class="container">
+        <div class="container" id="firstContainer"  style="display:''">
             <div class="row">
                 <h1>Coding Quiz Challenge</h1>
             </div>
@@ -32,12 +32,41 @@
                 </p>
             </div>
             <div class="row">
-                <a href="questions.html">
-                    <button type="button" class="btn btn-info">
-                        Start Quiz
-                    </button>
-                </a>
+                <button type="button" class="btn btn-info" id="startButton">
+                    Start Quiz
+                </button>
             </div>
         </div>
+        <div class="container" id="secondContainer" style="display:none">
+            <div class="row">
+                <h1>Questions</h1>
+            </div>
+            <form class="row">
+                <div class="form-check" id="question">
+                    <p id="title"></p>
+                    <div class="form-check">
+                        <input class="form-check-input" id= "button0" type="radio" name="radAnswer" value="0">
+                        <label class="form-check-label" id="ans0"></label></label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" id= "button1" type="radio" name="radAnswer" value="1">
+                        <label class="form-check-label" id="ans1"></label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" id= "button2" type="radio" name="radAnswer" value="2">
+                        <label class="form-check-label" id="ans2"></label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" id= "button3" type="radio" name="radAnswer" value="3">
+                        <label class="form-check-label" id="ans3"></label>
+                    </div>
+                </div>
+            </form>
+            <div class="row">
+                <div class="col"><p id="correctans"></p></div>
+                <div class="col"><p id="donebanner"></p></div>
+            </div>
+        </div>
+        <script src="Assets/script/questions.js"></script>
     </body>
 </html>
