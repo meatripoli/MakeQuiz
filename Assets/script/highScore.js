@@ -8,8 +8,10 @@ var highScoresArr = JSON.parse(localStorage.getItem("highScores"));
 finalScore.textContent = localStorage.getItem("currentScore")
 
 if(finalScore.textContent == ""){
+    document.getElementById("finalScorePreText").textContent = "Quiz not completed"
     intialsTxt.style.visibility = 'hidden';
     submitButton.style.visibility = 'hidden';
+    document.getElementById("finalScoreReminder").style.visibility = 'hidden';
 }
 else{
     intialsTxt.style.visibility = '';

@@ -9,13 +9,28 @@ var questions = [
         choices: ["quotes", "curly brackets", "parentheses", "square brackets"],
         answer: "parentheses"
     },
-///etc.
+    {
+        title: "Inside which HTML element do we put the JavaScript?",
+        choices: ["<js>", "<scripting>", "<javascript>", "<script>"],
+        answer: "<script>"
+    },
+    {
+        title: "Where is the correct place to insert a JavaScript?",
+        choices: ["the <body> section", "the <head> section", "the <footer> section", "both the <head> and <body> sections"],
+        answer: "the <body> section"
+    },
+    {
+        title: "How do you write 'Hello World' in an alert box?",
+        choices: ["msgBox('Hello World')", "alert('Hello World')", "msg('Hello World')", "alertBox('Hello World')"],
+        answer: "alert('Hello World')"
+    }
 ];
 var titleTxt = document.getElementById("title");
 var choiceButtons = document.querySelectorAll("input");
 var choiceTxt = document.querySelectorAll("label");
 var questionArea = document.getElementById("question");
 var startButton = document.getElementById("startButton");
+var questionNumber = document.getElementById("questionNumber");
 
 var questionNum;
 var score;
@@ -31,14 +46,14 @@ localStorage.removeItem("currentScore");
 function switchQuestions(questionsObjectArr,i){
     if(i<questionsObjectArr.length){
         console.log("inside switchQuestions");
+        questionNumber.textContent = " "+(i+1);
         titleTxt.textContent = questionsObjectArr[i].title;
         createChoices(questionsObjectArr[i].choices);
     }
     else{
         console.log("the End");
-        //document.getElementById("donebanner").textContent = "All done!!!!"
-        document.location.href = "highScore.html";
         localStorage.setItem("currentScore", score+(quizTotalSec - quizSecElapsed));
+        document.location.href = "highScore.html";
     }
 }
 

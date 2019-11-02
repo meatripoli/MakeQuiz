@@ -9,17 +9,17 @@
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
         <!---->
     </head>
-    <body>
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <body>     
+        <nav class="nav justify-content-end"> <!--navbar navbar-expand-lg navbar-light bg-light-->
             <a class="nav-link active" href="highScore.html">
                 Highscores
             </a>
-            <div class="nav justify-content-end" id="navbarText">
-                <span class="navbar-text" id="quizTimer">
+            <div class="nav-item" id="navbarText">
+                <span class="nav-link disabled" id="quizTimer">
                     Time: 0
                 </span>
             </div>
-        </nav>        
+        </nav>   
         <div class="container" id="firstContainer"  style="display:''">
             <div class="row">
                 <h1>Coding Quiz Challenge</h1>
@@ -39,14 +39,14 @@
         </div>
         <div class="container" id="secondContainer" style="display:none">
             <div class="row">
-                <h1>Questions</h1>
+                <h1>Question<span id="questionNumber"></span></h1>
             </div>
             <form class="row">
                 <div class="form-check" id="question">
                     <p id="title"></p>
                     <div class="form-check">
                         <input class="form-check-input" id= "button0" type="radio" name="radAnswer" value="0">
-                        <label class="form-check-label" id="ans0"></label></label>
+                        <label class="form-check-label" id="ans0"></label>
                     </div>
                     <div class="form-check">
                         <input class="form-check-input" id= "button1" type="radio" name="radAnswer" value="1">

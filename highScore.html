@@ -10,22 +10,17 @@
         <!---->
     </head>
     <body>
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <nav class="nav justify-content-end">
             <a class="nav-link disabled" href="highScore.html">
                 Highscores
             </a>
-            <div class="nav justify-content-end" id="navbarText">
-                <span class="navbar-text">
-                    Time: 0
-                </span>
-            </div>
         </nav>        
         <div class="container">
             <div class="row">
                 <div class="col">
                     <div class="row">
-                        <h3 >Your final score is: <span id="finalScore"></span></h3>
-                        <p >If you want to save your score please submit your initails below</p>
+                        <h3 id="finalScorePreText">Your final score is: <span id="finalScore"></span></h3>
+                        <p id="finalScoreReminder">If you want to save your score please submit your initails below</p>
                     </div>
                     <form class="row" id="highscore-form">
                         <input type="text" placeholder="Enter your initials here" name="initials-text" id="initials-text" />
@@ -42,7 +37,7 @@
                     </div>
                 </div>
                 <div class="col">
-                    Highscores Table
+                    <h3>Highscores Table</h3>
                     <div id="highScore-list">
                         
                     </div>
