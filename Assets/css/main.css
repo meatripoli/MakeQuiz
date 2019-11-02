@@ -1,1 +1,46 @@
-/*@media and min width 991 Timer moves to left side of nav*/
+body{
+    font-family: 'McLaren', cursive;
+    color: #0F292F;
+    background: #cccccc;
+}
+nav{
+    background: #0F292F;
+}
+#quizTimer{
+    color:#CB2D6F;
+}
+#startButton{
+    background-color: #14A098;
+    color: #0F292F;
+}
+a{
+    color: #14A098;
+}
+a:hover{
+    color: #cccccc;
+}
+.form-check-input{
+    cursor: pointer;  
+}
+.container{
+    margin: 20px;
+}
+#correctans{
+    margin-top: 10px;
+    border-top: solid;
+    border-top-color: #cccccc;
+
+}
+@media screen and (max-width: 670px){
+    body,#startButton{
+        font-size: 30px;
+    }
+    input[type=radio] {
+        -ms-transform: scale(2); /* IE 9 */
+        -webkit-transform: scale(2); /* Chrome, Safari, Opera */
+        transform: scale(2);
+    }
+    .form-check-label{
+        padding-left: 10px;
+    }
+}

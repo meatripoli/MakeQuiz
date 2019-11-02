@@ -1,0 +1,38 @@
+body{
+    font-family: 'McLaren', cursive;
+    color: #0F292F;
+    background: #cccccc;
+}
+nav{
+    background: #0F292F;
+}
+#clearscore-button,#highscore-button,#back2Beginning{
+    background-color: #14A098;
+    color: #0F292F;
+}
+#linkdisabled{
+    color: #CB2D6F;
+}
+.col{
+    margin: 20px;
+}
+#highScore-list,#back2Beginning{
+    margin-top: 20px;
+}
+#initials-text{
+    margin-right: 5px;
+    margin-top: 10px;
+}
+#highscore-button{
+    margin-top: 10px;
+    margin-left: 5px;
+}
+h3{
+    color: #CB2D6F;
+    
+}
+@media screen and (max-width: 670px){
+    body,.btn{
+        font-size: 30px;
+    }
+}

@@ -43,6 +43,10 @@ var interval;
 
 localStorage.removeItem("currentScore");
 
+function checkButton(element){
+    element.checked = true;
+}
+
 function switchQuestions(questionsObjectArr,i){
     if(i<questionsObjectArr.length){
         console.log("inside switchQuestions");
@@ -121,6 +125,7 @@ startButton.addEventListener("click",function(event){
     startTimer();
     document.getElementById("firstContainer").style.display = "none";
     document.getElementById("secondContainer").style.display = "";
+    document.getElementById("linkenabled").removeAttribute("href");
     questionNum = 0;
     score = 0;
     console.log("start quiz button pressed");
@@ -148,8 +153,8 @@ if answer is wrong no points will be given and 10 sec will be removed from timer
    if(answerPicked === questions[questionNum].answer){
         console.log("correct");
         score += 5;
-        document.getElementById("correctans").textContent = "Correct!!!!";
-        document.getElementById("correctans").appendChild(document.createElement("hr"));
+        document.getElementById("correctans").textContent = "Correct!";
+        document.getElementById("correctans").prepend(document.createElement("hr"));
         questionNum++;
         ///delay of 1 sec before switching to new question
         setTimeout(switchQuestions(questions,questionNum),1000);
@@ -163,8 +168,8 @@ if answer is wrong no points will be given and 10 sec will be removed from timer
             quizSecElapsed +=10;
         }
         
-        document.getElementById("correctans").textContent = "Wrong!!!!";
-        document.getElementById("correctans").appendChild(document.createElement("hr"));
+        document.getElementById("correctans").textContent = "Incorrect!";
+        document.getElementById("correctans").prepend(document.createElement("hr"));
         questionNum++;
         ///delay of 1 sec before switching to new question
         setTimeout(switchQuestions(questions,questionNum),1000);

@@ -41,14 +41,17 @@ function buttonClick(event){
     event.preventDefault();
     var finalScoreNum = finalScore.textContent;
     var initialsValue = intialsTxt.value;
-    highScores.push({initials:initialsValue, score:finalScoreNum});
-    intialsTxt.value = "";
-    var sortedHighScore = highScores.sort((a, b) => (parseInt(a.score) < parseInt(b.score)) ? 1 : -1);
-    displayList(sortedHighScore);
-    localStorage.setItem("highScores", JSON.stringify(sortedHighScore))
-    intialsTxt.disabled = true;
-    intialsTxt.style.visibility = 'hidden';
-    submitButton.style.visibility = 'hidden';
+    if(initialsValue !== ""){
+        highScores.push({initials:initialsValue, score:finalScoreNum});
+    
+        intialsTxt.value = "";
+        var sortedHighScore = highScores.sort((a, b) => (parseInt(a.score) < parseInt(b.score)) ? 1 : -1);
+        displayList(sortedHighScore);
+        localStorage.setItem("highScores", JSON.stringify(sortedHighScore))
+        intialsTxt.disabled = true;
+        intialsTxt.style.visibility = 'hidden';
+        submitButton.style.visibility = 'hidden';
+    }
     // if I want to view it I would do this JSON.parse(localStorage.getItem("highScores"))
 }
 
